@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func
 from sqlalchemy.orm import Session
