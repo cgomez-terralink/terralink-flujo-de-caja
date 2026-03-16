@@ -1,5 +1,6 @@
 from datetime import date, datetime
 from decimal import Decimal
+from typing import Optional
 
 from pydantic import BaseModel
 
@@ -7,32 +8,32 @@ from pydantic import BaseModel
 class MovementBase(BaseModel):
     movement_type: str
     bank_id: int
-    provider: str | None = None
-    purchase_order: str | None = None
-    invoice: str | None = None
-    invoice_date: date | None = None
-    payment_terms: str | None = None
+    provider: Optional[str] = None
+    purchase_order: Optional[str] = None
+    invoice: Optional[str] = None
+    invoice_date: Optional[date] = None
+    payment_terms: Optional[str] = None
     date: date
-    document: str | None = None
+    document: Optional[str] = None
     tax_amount: Decimal = 0
     income_statement_amount: Decimal = 0
     cashflow_amount: Decimal
-    status: str | None = None
-    concept: str | None = None
-    business_center: str | None = None
-    operational_expenses_cat1: str | None = None
-    admin_expenses_cat: str | None = None
-    month_number: int | None = None
-    income_statement_month: str | None = None
-    cashflow_date: date | None = None
-    year: int | None = None
-    group1_income_statement: str | None = None
-    group2_income_statement: str | None = None
-    group3_income_statement: str | None = None
-    group1_cashflow: str | None = None
-    group2_cashflow: str | None = None
-    group3_cashflow: str | None = None
-    month_year: str | None = None
+    status: Optional[str] = None
+    concept: Optional[str] = None
+    business_center: Optional[str] = None
+    operational_expenses_cat1: Optional[str] = None
+    admin_expenses_cat: Optional[str] = None
+    month_number: Optional[int] = None
+    income_statement_month: Optional[str] = None
+    cashflow_date: Optional[date] = None
+    year: Optional[int] = None
+    group1_income_statement: Optional[str] = None
+    group2_income_statement: Optional[str] = None
+    group3_income_statement: Optional[str] = None
+    group1_cashflow: Optional[str] = None
+    group2_cashflow: Optional[str] = None
+    group3_cashflow: Optional[str] = None
+    month_year: Optional[str] = None
     source: str = "manual"
 
 
@@ -41,36 +42,36 @@ class MovementCreate(MovementBase):
 
 
 class MovementUpdate(BaseModel):
-    movement_type: str | None = None
-    bank_id: int | None = None
-    provider: str | None = None
-    cashflow_amount: Decimal | None = None
-    status: str | None = None
-    concept: str | None = None
-    business_center: str | None = None
-    date: date | None = None
+    movement_type: Optional[str] = None
+    bank_id: Optional[int] = None
+    provider: Optional[str] = None
+    cashflow_amount: Optional[Decimal] = None
+    status: Optional[str] = None
+    concept: Optional[str] = None
+    business_center: Optional[str] = None
+    date: Optional[date] = None
 
 
 class MovementResponse(MovementBase):
     id: int
-    bank_name: str | None = None
-    created_at: datetime | None = None
-    updated_at: datetime | None = None
+    bank_name: Optional[str] = None
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None
 
     model_config = {"from_attributes": True}
 
 
 class MovementFilters(BaseModel):
-    bank_id: int | None = None
-    bank_name: str | None = None
-    movement_type: str | None = None
-    status: str | None = None
-    business_center: str | None = None
-    year: int | None = None
-    month: int | None = None
-    date_from: date | None = None
-    date_to: date | None = None
-    group1_cashflow: str | None = None
+    bank_id: Optional[int] = None
+    bank_name: Optional[str] = None
+    movement_type: Optional[str] = None
+    status: Optional[str] = None
+    business_center: Optional[str] = None
+    year: Optional[int] = None
+    month: Optional[int] = None
+    date_from: Optional[date] = None
+    date_to: Optional[date] = None
+    group1_cashflow: Optional[str] = None
 
 
 class CashflowSummary(BaseModel):

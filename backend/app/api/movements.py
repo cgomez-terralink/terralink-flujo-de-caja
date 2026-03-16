@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy import case, func
@@ -43,15 +44,15 @@ def _apply_filters(query, **kwargs):
 
 @router.get("/", response_model=list[MovementResponse])
 def list_movements(
-    bank_id: int | None = None,
-    movement_type: str | None = None,
-    status: str | None = None,
-    business_center: str | None = None,
-    year: int | None = None,
-    month: int | None = None,
-    date_from: str | None = None,
-    date_to: str | None = None,
-    group1_cashflow: str | None = None,
+    bank_id: Optional[int] = None,
+    movement_type: Optional[str] = None,
+    status: Optional[str] = None,
+    business_center: Optional[str] = None,
+    year: Optional[int] = None,
+    month: Optional[int] = None,
+    date_from: Optional[str] = None,
+    date_to: Optional[str] = None,
+    group1_cashflow: Optional[str] = None,
     skip: int = 0,
     limit: int = 500,
     db: Session = Depends(get_db),
@@ -74,10 +75,10 @@ def list_movements(
 
 @router.get("/summary/by-period", response_model=list[CashflowSummary])
 def cashflow_by_period(
-    year: int | None = None,
-    bank_id: int | None = None,
-    business_center: str | None = None,
-    status: str | None = None,
+    year: Optional[int] = None,
+    bank_id: Optional[int] = None,
+    business_center: Optional[str] = None,
+    status: Optional[str] = None,
     db: Session = Depends(get_db),
     _=Depends(get_current_user),
 ):
@@ -104,9 +105,9 @@ def cashflow_by_period(
 
 @router.get("/summary/by-bank", response_model=list[BankSummary])
 def cashflow_by_bank(
-    year: int | None = None,
-    month: int | None = None,
-    status: str | None = None,
+    year: Optional[int] = None,
+    month: Optional[int] = None,
+    status: Optional[str] = None,
     db: Session = Depends(get_db),
     _=Depends(get_current_user),
 ):

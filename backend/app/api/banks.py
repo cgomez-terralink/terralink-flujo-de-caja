@@ -1,3 +1,5 @@
+from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
@@ -13,7 +15,7 @@ class BankResponse(BaseModel):
     id: int
     name: str
     short_name: str
-    account_number: str | None = None
+    account_number: Optional[str] = None
     currency: str
     is_active: bool
 

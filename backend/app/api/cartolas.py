@@ -1,3 +1,5 @@
+from typing import Optional
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy import func
 from sqlalchemy.orm import Session
@@ -20,10 +22,10 @@ router = APIRouter(prefix="/cartolas", tags=["cartolas"])
 
 @router.get("/", response_model=list[CartolaEntryResponse])
 def list_cartola_entries(
-    bank_id: int | None = None,
-    year: int | None = None,
-    month: int | None = None,
-    reconciled: bool | None = None,
+    bank_id: Optional[int] = None,
+    year: Optional[int] = None,
+    month: Optional[int] = None,
+    reconciled: Optional[bool] = None,
     skip: int = 0,
     limit: int = 500,
     db: Session = Depends(get_db),
@@ -71,7 +73,7 @@ def bulk_create_cartola_entries(entries: list[CartolaEntryCreate], db: Session =
 
 @router.get("/reconciliation/summary", response_model=ReconciliationSummary)
 def reconciliation_summary(
-    bank_id: int | None = None,
+    bank_id: Optional[int] = None,
     db: Session = Depends(get_db),
     _=Depends(get_current_user),
 ):
