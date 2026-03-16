@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from sqlalchemy import Column, Integer, String, Boolean
 from app.core.database import Base
 

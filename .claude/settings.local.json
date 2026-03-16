@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(export PATH=\"/opt/homebrew/bin:/usr/local/bin:$PATH\")",
+      "Bash(echo $NVM_DIR)",
+      "Read(//Users/cristiangomez/.nvm/versions/**)",
+      "Read(//Users/cristiangomez/.volta/**)",
+      "Read(//Users/cristiangomez/.fnm/**)",
+      "Bash(brew list:*)",
+      "Bash(brew --version)",
+      "Bash(echo $SHELL)",
+      "Bash(echo $PATH)",
+      "Bash(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)",
+      "Bash(git --version)",
+      "Bash(gh --version)",
+      "Bash(git init:*)",
+      "Bash(git remote:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(python3 -m pip --version)",
+      "Bash(python3 -m pip install --user -r requirements.txt)",
+      "Bash(python3 -m pip install --user fastapi==0.115.6 \"uvicorn[standard]==0.34.0\" sqlalchemy==2.0.36 alembic==1.14.1 \"python-jose[cryptography]==3.3.0\" \"passlib[bcrypt]==1.7.4\" python-multipart==0.0.20 pydantic-settings==2.7.1 python-dotenv==1.0.1 aiosqlite==0.20.0)"
+    ]
+  }
+}

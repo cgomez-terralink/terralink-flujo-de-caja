@@ -3,6 +3,11 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.api import auth, banks, cartolas, movements
 from app.core.config import settings
+from app.core.database import Base, engine
+
+# Auto-create tables on startup (dev mode with SQLite)
+from app.models import bank, cartola, movement, reconciliation, user  # noqa
+Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title=settings.PROJECT_NAME, version="1.0.0")
 

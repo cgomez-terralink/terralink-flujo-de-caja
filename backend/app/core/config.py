@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pydantic_settings import BaseSettings
 
 
@@ -5,7 +7,7 @@ class Settings(BaseSettings):
     PROJECT_NAME: str = "Terralink Tesorería"
     API_V1_PREFIX: str = "/api/v1"
 
-    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/terralink"
+    DATABASE_URL: str = "sqlite:///./terralink.db"
 
     SECRET_KEY: str = "change-me-in-production-use-env-var"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 480  # 8 hours

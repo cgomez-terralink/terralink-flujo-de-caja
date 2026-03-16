@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from sqlalchemy import (
     Column, Date, DateTime, ForeignKey, Integer, Numeric, String, Text, func,
 )
