@@ -16,6 +16,7 @@ class Settings(BaseSettings):
         "http://localhost:3000",
         "https://terralink-tesoreria.vercel.app",
         "https://terralink-flujo-de-caja.vercel.app",
+        "https://terralink-flujo-de-caja-cgomez-terralinks-projects.vercel.app",
     ]
 
     model_config = {"env_file": ".env", "extra": "ignore"}
